@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script type="text/babel">
+        /**
+         * let声明的变量只在 let 命令所在的代码块内有效
+         *
+         * let 不存在变量提升,如果用 var 声明,那么在脚本刚开始运行时,变量已经存在
+         *
+         * 暂时性死区
+         * 变量一定要在声明后再使用
+         * let不允许在同一作用域内重复声明一个变量,不能在函数内部重新声明参数
+         * 如果区块中存在 let 和 const 命令,则这个区块对这些命令声明的变量的从一开始就形成封闭
+         * 作用域。只要在声明之前就使用这些变量。就会报错;
+         *
+         * 块级作用域 允许块级作用域的任意嵌套
+         *
+         * 块级作用域替代IIFE(立即执行匿名函数)
+         *
+         * IIFE 写法:
+         *      (function(){……}())
+         * 块级作用域写法:
+         *      { …… }
+         *
+         * 避免在块级作用域内声明函数,如果需要应写成函数表达式
+         *
+         * */
+        window.onload = function () {
+            for(let i = 0; i < 2; i++){
+                document.getElementById('div').innerText = "Hello ES6";
+            };
+//            console.log(i);
+            var a = [];
+            for(let i = 0; i < 10; i++){
+                a[i] = function () {
+                    console.log(i);
+                }
+            };
+            a[6](); //var 10 ; let 6
+
+            /*外层代码块不受内层代码块的影响*/
+            function f1() {
+                let n = 5;
+                if(true){
+                    let n = 10;
+                }
+                console.log(n);
+            };
+            f1();
+        }
+    </script>
+</head>
+<body>
+    <div id="div"></div>
+</body>
+</html>

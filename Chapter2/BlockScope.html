@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>块级作用域</title>
+    <script type="text/javascript" src="../lib/browser.min.js"></script>
+    <script type="text/javascript">
+        function f() {
+            console.log("I am outside");
+        };
+        (function () {
+            if(!false){
+                function f() {
+                    console.log('I am inside');
+                }
+            };
+            f();
+        }());
+    </script>
+    <script type="text/babel">
+//        function f() {
+//            console.log("es6: I am outside");
+//        };
+        let f = () => {console.log("es6--let: I am outside")};
+        (function () {
+            if(false){
+                function f() {
+                    console.log('I am inside');
+                }
+            };
+            f();
+        }());
+    </script>
+    <script type="text/babel">
+        let f;
+        {
+            let a = 'secret';
+//            f = function () {
+//                return a;
+//            };
+            f = () => {console.log(a)};
+        }
+        f();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

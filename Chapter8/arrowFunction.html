@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>箭头函数编写</title>
+    <script type="text/javascript" src="lib/browser.min.js"></script>
+    <script type="text/javascript">
+        //ES5
+        var f = function (v) {
+            console.log(v)
+        };
+        f("es5");
+        var sum = function (num1, num2) {
+            console.log(num1 + num2);
+        };
+        sum(1,2);
+
+    </script>
+    <script type="text/babel">
+        //ES6
+        var f = v => {console.log(v)};
+        f("es6");
+        var sum = (num1, num2) => {
+            console.log(num1);
+            console.log(num2);
+            console.log(this);
+        };
+        sum(1,2);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

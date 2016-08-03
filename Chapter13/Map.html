@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Map数据结构</title>
+    <script type="text/javascript" src="../lib/browser.min.js"></script>
+    <script type="text/babel">
+        let map = new Map([
+            ['F', 'no'],
+            ['T', 'yes']
+        ]);
+        for(let key of map.keys()){
+            console.log(key);
+        };
+        for(let value of map.values()){
+            console.log(value);
+        };
+        for(let item of map.entries()){
+//            console.log(item);
+            console.log(item[0], item[1]);
+        }
+        for(let [key, value] of map.entries()){
+            console.log(key, value);
+        }
+        for(let [key, value] of map){
+            console.log(key, value);
+        }
+    </script>
+    <script type="text/babel">
+        console.log("---Map 结构转为数组结构---");
+        let map = new Map([
+                [1, 'one'],
+                [2, 'two'],
+                [3, 'three']
+        ]);
+        console.log(...map.keys());
+        console.log(...map.values());
+        console.log(...map.entries());
+        console.log(...map);
+    </script>
+    <script type="text/babel">
+        console.log("---map、filter 方法---");
+        let map0 = new Map()
+            .set(1, 'a')
+            .set(2, 'b')
+            .set(3, 'c');
+        let map1 = new Map(
+               console.log([...map0].filter(([k, v]) => k<3))
+        );
+        let map2 = new Map(
+                console.log([...map0].map(([k, v]) => [k *2, '_'+ v]))
+        );
+    </script>
+    <script type="text/babel">
+        console.log("---forEach 方法---");
+        let map = new Map([
+            [1, 'one'],
+            [2, 'two'],
+            [3, 'three']
+        ]);
+        map.forEach(function (v, k ,map) {
+            console.log("Key: %s, Value: %s", k, v);
+        });
+        console.log("---绑定 this---");
+        var reporter = {
+            report: (k, v) => console.log("Key: %s, Value: %s", k, v)
+        };
+        map.forEach(function (v, k, map) {
+            this.report(k, v);
+        }, reporter);
+    </script>
+    <script type="text/babel">
+        console.log("---与其他数据结构互换---");
+        let myMap = new Map().set(true, 7).set({foo: 3}, ['abc']);
+        console.log([...myMap]);
+        console.log(new Map([...myMap]));
+
+        /**
+         * 如果所有Map 键key 都是字符串,它可以转为对象
+         * */
+        console.log("---对象互换--");
+        let myMap1 = new Map().set('yes', true).set('no', false);
+        let strMapToObj = strMap => {
+            let obj = Object.create(null);
+            for(let [k, v] of strMap){
+                obj[k] = v;
+            }
+            return obj;
+        };
+        console.log(strMapToObj(myMap1));
+        let objToStrMap = obj => {
+            let strMap = new Map();
+            for(let k of Object.keys(obj)){
+                strMap.set(k, obj[k]);
+            };
+            return strMap;
+        };
+        console.log(objToStrMap({yes: true, no: false}));
+
+        /**
+         * JSON 为Map, 正常情况下,所有的键名都是字符串
+         *
+         * */
+        console.log("---JSON 转为Map---");
+        let jsonToStrMap = (jsonStr) => {return objToStrMap(JSON.parse(jsonStr))};
+        console.log(jsonToStrMap('{"yes": true, "no": false}'));
+        let jsonToMap = (jsonStr) => {return new Map(JSON.parse(jsonStr))};
+        console.log(jsonToMap('[[true,7],[{"foo":3},["abc"]]]'));
+    </script>
+</head>
+<body>
+
+</body>
+</html>

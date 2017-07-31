@@ -1,0 +1,26 @@
+{
+  "name": "ecmascript6-primer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShadowWalker627/ECMAScript6-Primer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShadowWalker627/ECMAScript6-Primer/issues"
+  },
+  "homepage": "https://github.com/ShadowWalker627/ECMAScript6-Primer#readme",
+  "devDependencies": {
+    "webpack": "^3.4.1",
+    "webpack-dev-server": "^2.6.1"
+  }
+}

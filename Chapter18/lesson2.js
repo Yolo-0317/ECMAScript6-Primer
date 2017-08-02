@@ -16,18 +16,19 @@
 //   console.log(`getStockPriceByName ${result}`);
 // });
 
-function timeout(ms) {
-  console.log('timeout');
-  console.log(this === global);
-  return new Promise((resolve) => {
+async function timeout(ms) {
+  await new Promise((resolve) => {
     setTimeout(resolve, ms);
   });
 }
 
 async function asyncPrint(value, ms) {
-  console.log('asyncPrint');
-  await timeout(ms);
-  console.log(value);
+  await timeout(ms).then(() => {
+    console.log('resolve--timeout');
+  });
+  console.log(value); // hello world
 }
 
-asyncPrint('hello world', 500);
+asyncPrint('hello world', 1000).then(() => {
+  console.log('resolve');
+});

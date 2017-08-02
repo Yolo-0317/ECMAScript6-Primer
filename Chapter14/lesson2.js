@@ -1,4 +1,4 @@
-//所以我们用Promise的时候一般是包在一个函数中，在需要的时候去运行这个函数
+// 所以我们用Promise的时候一般是包在一个函数中，在需要的时候去运行这个函数
 
 // function timeout(ms) {
 //   console.log('timeout');
@@ -26,10 +26,12 @@ const runAsync = (promiseValue) => {
       console.log('reject');
       reject('reject from promise');
     }
-  })
+  });
   return promise;
-}
+};
 
 runAsync(false).then((value) => {
   console.log(`resolve -- ${value}`);
-}).catch((err) => { console.log(`reject -- ${err}`) });
+}).catch((err) => {
+  console.log(`reject -- ${err}`);
+});

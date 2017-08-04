@@ -10,9 +10,9 @@ async function getMoviesFromApi() {
   }
 }
 
-getMoviesFromApi().then(
-  (value) => console.log(value)
-);
+getMoviesFromApi().then((value) => {
+  console.log(value);
+});
 
 //
 async function timeout(ms) {
@@ -25,7 +25,9 @@ async function timeout(ms) {
 async function asyncPrint(value, ms) {
   await timeout(ms).then(() => {
     console.log('resolve--timeout');
-  }).catch((e) => { console.log(e) });
+  }).catch((e) => {
+    console.log(e);
+  });
   console.log(value); // hello world
 }
 
@@ -35,8 +37,8 @@ asyncPrint('hello world', 1000).then(() => {
 
 // Promise 对象的状态变化
 async function getTitle(url) {
-  let response = await fetch(url);
-  let html = await response.text();
+  const response = await fetch(url);
+  const html = await response.text();
   return html.match(/<title>([\s\S]+)<\/title>/i)[1];
 }
 getTitle('https://tc39.github.io/ecma262/').then((v) => { console.log(v) })

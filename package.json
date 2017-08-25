@@ -8,7 +8,12 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --devtool eval --progress --colors --hot --content-base src --inline --port 8081"
+    "dev": "webpack-dev-server --devtool eval --progress --colors --hot --content-base src --inline --port 8082",
+    "start": "webpack-dev-server src --port 8082",
+    "build": "webpack -p --config webpack.prod.config.js --progress",
+    "build:dev": "webpack --env=dev --progress --profile --colors",
+    "build:dist": "webpack --env=prod --progress --profile --colors",
+    "watch": "webpack-dev-server --hot --progress --colors --port 8082"
   },
   "repository": {
     "type": "git",
